@@ -1,0 +1,3 @@
+(executable
+ (name parse_change_log)
+ (libraries base stdio))
