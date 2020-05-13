@@ -16,8 +16,8 @@ let from_string s =
 
 let next version change =
   match change with
-  | Change.Breaking -> Some { major = version.major + 1; minor = 0; patch = 0 }
+  | Change.Breaking -> Ok { major = version.major + 1; minor = 0; patch = 0 }
   | Change.Minor ->
-      Some { major = version.major; minor = version.minor + 1; patch = 0 }
-  | Change.Patch -> Some { version with patch = version.patch + 1 }
-  | Change.Unclear -> None
+      Ok { major = version.major; minor = version.minor + 1; patch = 0 }
+  | Change.Patch -> Ok { version with patch = version.patch + 1 }
+  | Change.Unclear -> Error `Internal_error

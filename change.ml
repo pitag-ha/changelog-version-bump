@@ -1,5 +1,28 @@
 type t = Breaking | Minor | Patch | Unclear
 
+type tag = Tagged_as of t | Changed
+
+let header_table =
+  [
+    ("Added", Tagged_as Minor);
+    ("Changed", Changed);
+    ("Deprecated", Tagged_as Minor);
+    ("Fixed", Tagged_as Patch);
+    ("Removed", Tagged_as Breaking);
+    ("Security", Tagged_as Patch);
+  ]
+
+let tag_header header =
+  List.fold_left
+    (fun acc (known_header, tagging) ->
+      if header = known_header then Ok tagging else acc)
+    (Error header) header_table
+
+let equal a b =
+  match (a, b) with
+  | Breaking, Breaking | Minor, Minor | Patch, Patch | Unclear, Unclear -> true
+  | _ -> false
+
 let is_greater_equal a b =
   match (a, b) with
   | Breaking, _ -> true
@@ -9,16 +32,6 @@ let is_greater_equal a b =
   | Patch, _ -> true
   | _, Patch -> false
   | Unclear, Unclear -> true
-
-let tag_header header =
-  match header with
-  | "Fixed" -> Some Patch
-  | "Security" -> Some Patch
-  | "Added" -> Some Minor
-  | "Deprecated" -> Some Minor
-  | "Removed" -> Some Breaking
-  | "Changed" -> Some Unclear
-  | _ -> None
 
 let to_string change =
   match change with

@@ -8,6 +8,10 @@
 
 ### Changed
 
+### Bla
+
+### Foo
+
 ### Deprecated
 
 - Deprecate opam 1.x (#195, @gpetiot)
