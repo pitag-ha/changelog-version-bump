@@ -1,3 +1,3 @@
 (executable
  (name cli)
- (libraries base stdio rresult))
+ (libraries base stdio rresult cmdliner unix))
