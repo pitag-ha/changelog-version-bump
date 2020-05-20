@@ -1,4 +1,7 @@
-_build
-.vscode
-.merlin
+_build/
 _opam/
+*~
+\.\#*
+\#*#
+*.install
+.merlin
