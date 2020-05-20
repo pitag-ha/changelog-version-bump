@@ -1,6 +1,6 @@
 type t = Breaking | Minor | Patch | Unclear
 
-type tag = Tagged_as of t | Changed
+type tag = Tagged_as of t | Changed_header
 
 val header_table : (string * tag) list
 

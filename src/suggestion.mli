@@ -6,11 +6,9 @@ type t = {
 
 val make :
   string ->
+  Line.parse_info ->
   ( t,
     [> `Internal_error
-    | `Empty_changelog
-    | `Lacks_unreleased
-    | `No_changes_since of Version_number.t
     | `Change_unclear
     | `Last_release_unclear of Change.t
     | `Both_unclear

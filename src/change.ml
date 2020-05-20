@@ -1,11 +1,11 @@
 type t = Breaking | Minor | Patch | Unclear
 
-type tag = Tagged_as of t | Changed
+type tag = Tagged_as of t | Changed_header
 
 let header_table =
   [
     ("Added", Tagged_as Minor);
-    ("Changed", Changed);
+    ("Changed", Changed_header);
     ("Deprecated", Tagged_as Minor);
     ("Fixed", Tagged_as Patch);
     ("Removed", Tagged_as Breaking);
