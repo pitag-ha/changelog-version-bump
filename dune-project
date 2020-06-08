@@ -15,3 +15,4 @@ automize your changelog manipulation when releasing in one of the following two 
 - bump your changelog by using a `dune alias` with a `diff` action attached and calling `dune promote`
 ")
  (depends base stdio rresult cmdliner unix))
+(using mdx 0.1)
