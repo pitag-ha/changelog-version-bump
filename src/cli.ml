@@ -49,11 +49,22 @@ let parse_changelog changelog_path =
           eprintf "Info: The change has been tagged as a %s.\n"
             (Change.to_string semantic_change);
           { version_number = none; exit = 7; headers = Some parse_info }
-      | Error `Item_in_changed ->
+      | Error (`Item_in_changed semantic_change) ->
           eprintf
             "Error: Changes listed under the `Changed` header leave too much \
              room for interpretation to automatically deduce the semantic \
              change.";
+          let _ =
+            match semantic_change with
+            | Unclear -> eprintf "\n"
+            | Patch | Minor ->
+                eprintf
+                  " If it wasn't for those items, we'd suggest to tag the new \
+                   version as a %s.\n"
+                  (Change.to_string semantic_change)
+            | Breaking ->
+                eprintf "Furthermore, there's been an internal error.\n"
+          in
           { version_number = none; exit = 8; headers = Some parse_info }
       | Error `Internal_error ->
           eprintf

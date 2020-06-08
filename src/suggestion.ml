@@ -74,7 +74,7 @@ let make filepath parse_info =
                     warning ))
       in
       if item_in_changed && not (Change.equal semantic_change Change.Breaking)
-      then Error `Item_in_changed
+      then Error (`Item_in_changed semantic_change)
       else
         match (last_release, semantic_change) with
         | None, Unclear -> Error `Both_unclear

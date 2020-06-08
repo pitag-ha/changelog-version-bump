@@ -12,5 +12,5 @@ val make :
     | `Change_unclear
     | `Last_release_unclear of Change.t
     | `Both_unclear
-    | `Item_in_changed ] )
+    | `Item_in_changed of Change.t ] )
   result
