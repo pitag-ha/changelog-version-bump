@@ -1,0 +1,14 @@
+(alias
+ (name changelog-bump))
+
+(rule
+ (alias changelog-bump)
+ (action
+  (with-stdout-to
+   changelog.gen
+   (run ochangelog changelog-bump "CHANGE.md"))))
+
+(rule
+ (alias changelog-bump)
+ (action
+  (diff CHANGE.md changelog.gen)))
