@@ -1,7 +1,7 @@
 # ochangelog
 
-Automize your changelog manipulation when releasing in the following two ways:\n\
-- get a suggestion for what the next version number should be; make use of that, for example, in a script\n\
+Automize your changelog manipulation when releasing in the following two ways:
+- get a suggestion for what the next version number should be; make use of that, for example, in a script
 - bump your changelog by using a `dune alias` with a `diff` action attached and calling `dune promote`. See _Example_ for that.
 
 ## Installation
